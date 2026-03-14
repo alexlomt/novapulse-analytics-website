@@ -1,0 +1,14 @@
+{
+  "/(main)/about/page": "/about",
+  "/(main)/contact/page": "/contact",
+  "/(main)/features/page": "/features",
+  "/(main)/page": "/",
+  "/(main)/pricing/page": "/pricing",
+  "/_global-error/page": "/_global-error",
+  "/_not-found/page": "/_not-found",
+  "/api/contact/route": "/api/contact",
+  "/api/newsletter/route": "/api/newsletter",
+  "/api/og/fetch/route": "/api/og/fetch",
+  "/api/og/proxy/route": "/api/og/proxy",
+  "/favicon.ico/route": "/favicon.ico"
+}

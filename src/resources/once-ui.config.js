@@ -1,29 +1,33 @@
 // Import and set font for each variant
-import { Geist } from "next/font/google";
-import { Geist_Mono } from "next/font/google";
+import { Inter } from "next/font/google";
+import { JetBrains_Mono } from "next/font/google";
 
-const heading = Geist({
+const heading = Inter({
   variable: "--font-heading",
   subsets: ["latin"],
   display: "swap",
+  weight: ["400", "500", "600", "700"],
 });
 
-const body = Geist({
+const body = Inter({
   variable: "--font-body",
   subsets: ["latin"],
   display: "swap",
+  weight: ["400", "500"],
 });
 
-const label = Geist({
+const label = Inter({
   variable: "--font-label",
   subsets: ["latin"],
   display: "swap",
+  weight: ["400", "500", "600"],
 });
 
-const code = Geist_Mono({
+const code = JetBrains_Mono({
   variable: "--font-code",
   subsets: ["latin"],
   display: "swap",
+  weight: ["400", "500"],
 });
 
 const fonts = {
@@ -35,16 +39,16 @@ const fonts = {
 
 // default customization applied to the HTML in the main layout.tsx
 const style = {
-  theme: "system", // dark | light | system
-  neutral: "gray", // sand | gray | slate | mint | rose | dusk | custom
+  theme: "dark", // dark | light | system
+  neutral: "slate", // sand | gray | slate | mint | rose | dusk | custom
   brand: "blue", // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan
-  accent: "indigo", // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan
+  accent: "cyan", // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan
   solid: "contrast", // color | contrast | inverse
   solidStyle: "flat", // flat | plastic
-  border: "playful", // rounded | playful | conservative | sharp
+  border: "sharp", // rounded | playful | conservative | sharp
   surface: "filled", // filled | translucent
   transition: "all", // all | micro | macro
-  scaling: "100", // 90 | 95 | 100 | 105 | 110
+  scaling: "105", // 90 | 95 | 100 | 105 | 110
 };
 
 const dataStyle = {

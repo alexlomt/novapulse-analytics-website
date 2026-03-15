@@ -15,7 +15,6 @@ import {
   FlipFx,
   Icon,
   Background,
-  RevealFx,
 } from "@once-ui-system/core";
 import { Schema } from "@once-ui-system/core";
 import { baseURL, meta } from "@/resources/seo";
@@ -88,7 +87,7 @@ export default function AboutPage() {
         maxWidth="l"
         horizontal="center"
         paddingX="l"
-        paddingY="80"
+        paddingY="64"
         gap="24"
         align="center"
         style={{ margin: "0 auto" }}
@@ -104,32 +103,32 @@ export default function AboutPage() {
 
       {/* Company Stats */}
       <Column fillWidth background="surface" borderY="neutral-alpha-medium">
-        <Row
+        <Grid
+          columns="4"
+          gap="24"
           fillWidth
           maxWidth="l"
           paddingX="l"
           paddingY="48"
-          horizontal="center"
-          gap="48"
-          wrap
           style={{ margin: "0 auto" }}
+          s={{ columns: "2" }}
         >
           {companyStats.map((stat) => (
-            <Column key={stat.label} horizontal="center" gap="4" align="center" flex={1} minWidth="0">
+            <Column key={stat.label} horizontal="center" gap="4" align="center">
               <Row vertical="end" gap="2">
-                <Heading variant="display-strong-l">
+                <Heading variant="display-strong-m">
                   <CountFx value={stat.value} speed={1500} effect="smooth" />
                 </Heading>
-                {stat.suffix && <Heading variant="display-strong-l">{stat.suffix}</Heading>}
+                {stat.suffix && <Heading variant="display-strong-m">{stat.suffix}</Heading>}
               </Row>
               <Text variant="label-default-s" onBackground="neutral-weak">{stat.label}</Text>
             </Column>
           ))}
-        </Row>
+        </Grid>
       </Column>
 
       {/* Values */}
-      <Column fillWidth maxWidth="l" paddingX="l" paddingY="80" gap="48" style={{ margin: "0 auto" }}>
+      <Column fillWidth maxWidth="l" paddingX="l" paddingY="64" gap="48" style={{ margin: "0 auto" }}>
         <Column horizontal="center" gap="16" align="center">
           <Text variant="label-strong-s" onBackground="brand-medium">OUR VALUES</Text>
           <Heading variant="heading-strong-xl" align="center">
@@ -139,34 +138,33 @@ export default function AboutPage() {
 
         <Grid columns="2" gap="24" s={{ columns: "1" }}>
           {values.map((v) => (
-            <RevealFx key={v.title}>
-              <FlipFx
-                fillWidth
-                front={
-                  <Card padding="32" gap="16" direction="column" border="neutral-alpha-medium" fillWidth minHeight={200}>
-                    <Row width={48} height={48} radius="m" background="brand-alpha-medium" center>
-                      <Icon name={v.icon} size="m" onBackground="brand-medium" />
-                    </Row>
-                    <Heading variant="heading-strong-m">{v.title}</Heading>
-                    <Text variant="body-default-m" onBackground="neutral-weak">{v.description}</Text>
-                  </Card>
-                }
-                back={
-                  <Card padding="32" gap="16" direction="column" border="brand-medium" background="surface" fillWidth minHeight={200} center>
-                    <Text variant="body-default-m" onBackground="neutral-weak" align="center">
-                      {v.back}
-                    </Text>
-                  </Card>
-                }
-              />
-            </RevealFx>
+            <FlipFx
+              key={v.title}
+              fillWidth
+              front={
+                <Card padding="32" gap="16" direction="column" border="neutral-alpha-medium" fillWidth style={{ minHeight: '200px' }}>
+                  <Row width="48" height="48" radius="m" background="brand-alpha-medium" center>
+                    <Icon name={v.icon} size="m" onBackground="brand-medium" />
+                  </Row>
+                  <Heading variant="heading-strong-m">{v.title}</Heading>
+                  <Text variant="body-default-m" onBackground="neutral-weak">{v.description}</Text>
+                </Card>
+              }
+              back={
+                <Card padding="32" gap="16" direction="column" border="brand-medium" background="surface" fillWidth style={{ minHeight: '200px' }} center>
+                  <Text variant="body-default-m" onBackground="neutral-weak" align="center">
+                    {v.back}
+                  </Text>
+                </Card>
+              }
+            />
           ))}
         </Grid>
       </Column>
 
       {/* Team */}
       <Column fillWidth background="surface" borderY="neutral-alpha-medium">
-        <Column fillWidth maxWidth="l" paddingX="l" paddingY="80" gap="48" style={{ margin: "0 auto" }}>
+        <Column fillWidth maxWidth="l" paddingX="l" paddingY="64" gap="48" style={{ margin: "0 auto" }}>
           <Column horizontal="center" gap="16" align="center">
             <Text variant="label-strong-s" onBackground="brand-medium">TEAM</Text>
             <Heading variant="heading-strong-xl" align="center">
@@ -179,22 +177,20 @@ export default function AboutPage() {
 
           <Grid columns="3" gap="24" m={{ columns: "2" }} s={{ columns: "1" }}>
             {teamMembers.map((member) => (
-              <RevealFx key={member.name}>
-                <Card padding="24" gap="16" direction="column" border="neutral-alpha-medium" fillWidth horizontal="center" align="center">
-                  <Avatar value={member.initials} size="xl" />
-                  <Column gap="4" align="center">
-                    <Text variant="heading-strong-s">{member.name}</Text>
-                    <Text variant="body-default-s" onBackground="neutral-weak">{member.role}</Text>
-                  </Column>
-                </Card>
-              </RevealFx>
+              <Card key={member.name} padding="24" gap="16" direction="column" border="neutral-alpha-medium" fillWidth horizontal="center" align="center">
+                <Avatar value={member.initials} size="xl" />
+                <Column gap="4" align="center">
+                  <Text variant="heading-strong-s">{member.name}</Text>
+                  <Text variant="body-default-s" onBackground="neutral-weak">{member.role}</Text>
+                </Column>
+              </Card>
             ))}
           </Grid>
         </Column>
       </Column>
 
       {/* Company History */}
-      <Column fillWidth maxWidth="m" paddingX="l" paddingY="80" gap="48" style={{ margin: "0 auto" }}>
+      <Column fillWidth maxWidth="m" paddingX="l" paddingY="64" gap="48" style={{ margin: "0 auto" }}>
         <Column horizontal="center" gap="16" align="center">
           <Text variant="label-strong-s" onBackground="brand-medium">OUR JOURNEY</Text>
           <Heading variant="heading-strong-xl" align="center">
@@ -221,6 +217,7 @@ export default function AboutPage() {
           align="center"
           position="relative"
           style={{ margin: "0 auto" }}
+         
         >
           <Heading variant="heading-strong-xl" align="center">
             Join our team

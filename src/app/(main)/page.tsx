@@ -21,7 +21,7 @@ import {
 
 const stats = [
   { value: 10000, suffix: "+", label: "Active Users" },
-  { value: 99.9, suffix: "%", label: "Uptime SLA", decimals: 1 },
+  { value: 99, suffix: ".9%", label: "Uptime SLA" },
   { value: 50, suffix: "M+", label: "Events / Day" },
   { value: 200, suffix: "+", label: "Integrations" },
 ];
@@ -151,11 +151,13 @@ export default function HomePage() {
           maxWidth="l"
           horizontal="center"
           paddingX="l"
-          paddingY="104"
-          gap="32"
+          paddingTop="48"
+          paddingBottom="32"
+          gap="24"
           align="center"
           position="relative"
           style={{ margin: "0 auto" }}
+         
         >
           <RevealFx>
             <Badge title="Now in General Availability" arrow href="/features" />
@@ -180,54 +182,52 @@ export default function HomePage() {
               </Text>
             </Column>
           </RevealFx>
-          <RevealFx delay={0.3}>
-            <Row gap="16" horizontal="center" wrap>
-              <Button href="/contact" size="m" arrowIcon>
-                Start Free Trial
-              </Button>
-              <Button href="/features" variant="secondary" size="m">
-                See Features
-              </Button>
-            </Row>
-          </RevealFx>
+          <Row gap="16" horizontal="center" wrap fillWidth>
+            <Button href="/contact" size="m" arrowIcon>
+              Start Free Trial
+            </Button>
+            <Button href="/features" variant="secondary" size="m">
+              See Features
+            </Button>
+          </Row>
         </Column>
       </Column>
 
       {/* Stats */}
       <Column fillWidth background="surface" borderY="neutral-alpha-medium">
-        <Row
+        <Grid
+          columns="4"
+          gap="24"
           fillWidth
           maxWidth="l"
           paddingX="l"
-          paddingY="48"
-          horizontal="center"
-          gap="48"
-          wrap
+          paddingY="32"
           style={{ margin: "0 auto" }}
+          m={{ columns: "4" }}
+          s={{ columns: "2" }}
         >
           {stats.map((stat) => (
-            <Column key={stat.label} horizontal="center" gap="4" align="center" flex={1} minWidth="0">
+            <Column key={stat.label} horizontal="center" gap="4" align="center">
               <Row vertical="end" gap="2">
-                <Heading variant="display-strong-l">
+                <Heading variant="display-strong-m">
                   <CountFx
                     value={stat.value}
-                    decimals={stat.decimals ?? 0}
                     speed={1500}
                     effect="smooth"
                   />
                 </Heading>
-                <Heading variant="display-strong-l">{stat.suffix}</Heading>
+                <Heading variant="display-strong-m">{stat.suffix}</Heading>
               </Row>
               <Text variant="label-default-s" onBackground="neutral-weak">
                 {stat.label}
               </Text>
             </Column>
           ))}
-        </Row>
+        </Grid>
       </Column>
 
       {/* Features */}
-      <Column fillWidth maxWidth="l" paddingX="l" paddingY="80" gap="48" style={{ margin: "0 auto" }}>
+      <Column fillWidth maxWidth="l" paddingX="l" paddingY="64" gap="48" style={{ margin: "0 auto" }}>
         <Column horizontal="center" gap="16" align="center">
           <Text variant="label-strong-s" onBackground="brand-medium">FEATURES</Text>
           <Heading variant="heading-strong-xl" align="center">
@@ -241,22 +241,20 @@ export default function HomePage() {
 
         <Grid columns="3" gap="24" m={{ columns: "2" }} s={{ columns: "1" }}>
           {features.map((feature) => (
-            <RevealFx key={feature.title}>
-              <Card padding="32" gap="16" direction="column" border="neutral-alpha-medium" fillWidth fillHeight>
-                <Row width={48} height={48} radius="m" background="brand-alpha-medium" center>
-                  <Icon name={feature.icon} size="m" onBackground="brand-medium" />
-                </Row>
-                <Heading variant="heading-strong-m">{feature.title}</Heading>
-                <Text variant="body-default-m" onBackground="neutral-weak">{feature.description}</Text>
-              </Card>
-            </RevealFx>
+            <Card key={feature.title} padding="32" gap="16" direction="column" border="neutral-alpha-medium" fillWidth>
+              <Row width="48" height="48" radius="m" background="brand-alpha-medium" center>
+                <Icon name={feature.icon} size="m" onBackground="brand-medium" />
+              </Row>
+              <Heading variant="heading-strong-m">{feature.title}</Heading>
+              <Text variant="body-default-m" onBackground="neutral-weak">{feature.description}</Text>
+            </Card>
           ))}
         </Grid>
       </Column>
 
       {/* Testimonials */}
       <Column fillWidth background="surface" borderY="neutral-alpha-medium">
-        <Column fillWidth maxWidth="l" paddingX="l" paddingY="80" gap="48" style={{ margin: "0 auto" }}>
+        <Column fillWidth maxWidth="l" paddingX="l" paddingY="64" gap="48" style={{ margin: "0 auto" }}>
           <Column horizontal="center" gap="16" align="center">
             <Text variant="label-strong-s" onBackground="brand-medium">TESTIMONIALS</Text>
             <Heading variant="heading-strong-xl" align="center">
@@ -266,25 +264,23 @@ export default function HomePage() {
 
           <Grid columns="3" gap="24" m={{ columns: "1" }}>
             {testimonials.map((t) => (
-              <RevealFx key={t.author}>
-                <Card padding="32" gap="24" direction="column" border="neutral-alpha-medium" fillWidth fillHeight>
-                  <BlockQuote
-                    author={{ name: t.author }}
-                    subline={
-                      <Text variant="label-default-s" onBackground="neutral-weak">{t.role}</Text>
-                    }
-                  >
-                    {t.quote}
-                  </BlockQuote>
-                </Card>
-              </RevealFx>
+              <Card key={t.author} padding="32" gap="24" direction="column" border="neutral-alpha-medium" fillWidth>
+                <BlockQuote
+                  author={{ name: t.author }}
+                  subline={
+                    <Text variant="label-default-s" onBackground="neutral-weak">{t.role}</Text>
+                  }
+                >
+                  {t.quote}
+                </BlockQuote>
+              </Card>
             ))}
           </Grid>
         </Column>
       </Column>
 
       {/* FAQ */}
-      <Column fillWidth maxWidth="m" paddingX="l" paddingY="80" gap="48" style={{ margin: "0 auto" }}>
+      <Column fillWidth maxWidth="m" paddingX="l" paddingY="64" gap="48" style={{ margin: "0 auto" }}>
         <Column horizontal="center" gap="16" align="center">
           <Text variant="label-strong-s" onBackground="brand-medium">FAQ</Text>
           <Heading variant="heading-strong-xl" align="center">
@@ -306,11 +302,12 @@ export default function HomePage() {
           maxWidth="m"
           horizontal="center"
           paddingX="l"
-          paddingY="80"
+          paddingY="64"
           gap="32"
           align="center"
           position="relative"
           style={{ margin: "0 auto" }}
+         
         >
           <Heading variant="display-strong-l" align="center">
             Ready to unlock your data?

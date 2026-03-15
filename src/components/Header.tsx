@@ -26,49 +26,47 @@ export function Header() {
     >
       <Row
         fillWidth
-        maxWidth="l"
-        horizontal="center"
+        horizontal="between"
+        vertical="center"
         paddingX="l"
         paddingY="12"
-        vertical="center"
-        style={{ margin: "0 auto" }}
+        style={{ maxWidth: "var(--responsive-width-l)", margin: "0 auto" }}
       >
-        <Row horizontal="between" fillWidth vertical="center">
-          <SmartLink href="/" unstyled>
-            <Text variant="heading-strong-m" onBackground="neutral-strong">
-              NovaPulse
-            </Text>
-          </SmartLink>
+        <SmartLink href="/" unstyled>
+          <Text variant="heading-strong-m" onBackground="neutral-strong">
+            NovaPulse
+          </Text>
+        </SmartLink>
 
-          <Row gap="24" vertical="center" hide s={{ hide: false }}>
-            {navLinks.map((link) => (
-              <SmartLink key={link.href} href={link.href}>
-                <Text variant="label-default-s" onBackground="neutral-medium">
-                  {link.label}
-                </Text>
-              </SmartLink>
-            ))}
-            <ThemeSwitcher />
-            <Button href="/contact" variant="primary" size="s">
-              Get Started
-            </Button>
-          </Row>
+        {/* Desktop nav — hidden on mobile via CSS */}
+        <Row gap="24" vertical="center" className="desktop-nav">
+          {navLinks.map((link) => (
+            <SmartLink key={link.href} href={link.href}>
+              <Text variant="label-default-s" onBackground="neutral-medium">
+                {link.label}
+              </Text>
+            </SmartLink>
+          ))}
+          <ThemeSwitcher />
+          <Button href="/contact" variant="primary" size="s">
+            Get Started
+          </Button>
+        </Row>
 
-          <Row vertical="center" gap="8" s={{ hide: true }}>
-            <ThemeSwitcher />
-            <NavIcon isActive={mobileOpen} onClick={() => setMobileOpen(!mobileOpen)} />
-          </Row>
+        {/* Mobile nav toggle — hidden on desktop via CSS */}
+        <Row vertical="center" className="mobile-nav">
+          <NavIcon isActive={mobileOpen} onClick={() => setMobileOpen(!mobileOpen)} />
         </Row>
       </Row>
 
       {mobileOpen && (
         <Column
           fillWidth
-          padding="l"
+          paddingX="l"
+          paddingBottom="l"
           gap="16"
           background="surface"
           borderBottom="neutral-alpha-medium"
-          s={{ hide: true }}
         >
           {navLinks.map((link) => (
             <SmartLink key={link.href} href={link.href} unstyled>
@@ -77,6 +75,9 @@ export function Header() {
               </Text>
             </SmartLink>
           ))}
+          <Row paddingTop="8">
+            <ThemeSwitcher />
+          </Row>
           <Button href="/contact" variant="primary" size="m" fillWidth>
             Get Started
           </Button>

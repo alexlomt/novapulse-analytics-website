@@ -12,9 +12,7 @@ import {
   ToggleButton,
   Tag,
   Feedback,
-  ShineFx,
   Background,
-  RevealFx,
 } from "@once-ui-system/core";
 import { Schema } from "@once-ui-system/core";
 import { baseURL, meta } from "@/resources/seo";
@@ -99,7 +97,7 @@ export default function PricingPage() {
         maxWidth="l"
         horizontal="center"
         paddingX="l"
-        paddingY="80"
+        paddingY="64"
         gap="24"
         align="center"
         style={{ margin: "0 auto" }}
@@ -127,17 +125,16 @@ export default function PricingPage() {
       </Column>
 
       {/* Plans */}
-      <Column fillWidth maxWidth="l" paddingX="l" paddingBottom="80" style={{ margin: "0 auto" }}>
-        <Grid columns="3" gap="24" m={{ columns: "1" }}>
+      <Column fillWidth maxWidth="l" paddingX="l" paddingBottom="64" style={{ margin: "0 auto" }}>
+        <Grid columns="3" gap="24" m={{ columns: "2" }} s={{ columns: "1" }}>
           {plans.map((plan) => (
-            <RevealFx key={plan.name}>
               <Card
+                key={plan.name}
                 padding="32"
                 gap="24"
                 direction="column"
                 border={plan.recommended ? "brand-medium" : "neutral-alpha-medium"}
                 fillWidth
-                fillHeight
               >
                 {plan.recommended && (
                   <Row horizontal="center">
@@ -164,17 +161,9 @@ export default function PricingPage() {
                   )}
                 </Row>
 
-                {plan.recommended ? (
-                  <ShineFx>
-                    <Button href="/contact" variant={plan.ctaVariant} size="m" fillWidth arrowIcon>
-                      {plan.cta}
-                    </Button>
-                  </ShineFx>
-                ) : (
-                  <Button href="/contact" variant={plan.ctaVariant} size="m" fillWidth>
-                    {plan.cta}
-                  </Button>
-                )}
+                <Button href="/contact" variant={plan.ctaVariant} size="m" fillWidth arrowIcon={plan.recommended}>
+                  {plan.cta}
+                </Button>
 
                 <Column gap="12">
                   {plan.features.map((feature) => (
@@ -194,7 +183,6 @@ export default function PricingPage() {
                   ))}
                 </Column>
               </Card>
-            </RevealFx>
           ))}
         </Grid>
       </Column>

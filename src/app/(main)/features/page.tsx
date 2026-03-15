@@ -12,7 +12,6 @@ import {
   Badge,
   Tag,
   Background,
-  RevealFx,
   Timeline,
   SegmentedControl,
   Particle,
@@ -154,7 +153,8 @@ export default function FeaturesPage() {
           maxWidth="l"
           horizontal="center"
           paddingX="l"
-          paddingY="80"
+          paddingTop="64"
+          paddingBottom="32"
           gap="24"
           align="center"
           position="relative"
@@ -183,20 +183,18 @@ export default function FeaturesPage() {
 
         <Grid columns="3" gap="24" m={{ columns: "2" }} s={{ columns: "1" }}>
           {currentCategory.features.map((feature) => (
-            <RevealFx key={feature.title}>
-              <Card padding="32" gap="20" direction="column" border="neutral-alpha-medium" fillWidth fillHeight>
-                <Row width={48} height={48} radius="m" background="brand-alpha-medium" center>
-                  <Icon name={feature.icon} size="m" onBackground="brand-medium" />
-                </Row>
-                <Heading variant="heading-strong-m">{feature.title}</Heading>
-                <Text variant="body-default-m" onBackground="neutral-weak">{feature.description}</Text>
-                <Row gap="8" wrap>
-                  {feature.tags.map((tag) => (
-                    <Tag key={tag} label={tag} variant="neutral" size="s" />
-                  ))}
-                </Row>
-              </Card>
-            </RevealFx>
+            <Card key={feature.title} padding="32" gap="20" direction="column" border="neutral-alpha-medium" fillWidth>
+              <Row width="48" height="48" radius="m" background="brand-alpha-medium" center>
+                <Icon name={feature.icon} size="m" onBackground="brand-medium" />
+              </Row>
+              <Heading variant="heading-strong-m">{feature.title}</Heading>
+              <Text variant="body-default-m" onBackground="neutral-weak">{feature.description}</Text>
+              <Row gap="8" wrap>
+                {feature.tags.map((tag) => (
+                  <Tag key={tag} label={tag} variant="neutral" size="s" />
+                ))}
+              </Row>
+            </Card>
           ))}
         </Grid>
       </Column>
@@ -238,7 +236,7 @@ export default function FeaturesPage() {
       </Column>
 
       {/* Roadmap */}
-      <Column fillWidth maxWidth="m" paddingX="l" paddingY="80" gap="48" style={{ margin: "0 auto" }}>
+      <Column fillWidth maxWidth="m" paddingX="l" paddingY="64" gap="48" style={{ margin: "0 auto" }}>
         <Column horizontal="center" gap="16" align="center">
           <Text variant="label-strong-s" onBackground="brand-medium">ROADMAP</Text>
           <Heading variant="heading-strong-xl" align="center">
@@ -265,6 +263,7 @@ export default function FeaturesPage() {
           align="center"
           position="relative"
           style={{ margin: "0 auto" }}
+         
         >
           <Heading variant="heading-strong-xl" align="center">
             Ready to explore?

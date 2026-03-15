@@ -37,9 +37,9 @@ export function Footer() {
             </Row>
           </Column>
 
-          <Row flex={3} gap="48" wrap minWidth="0">
+          <Row flex={3} gap="32" wrap minWidth="0">
             {Object.entries(footerLinks).map(([category, links]) => (
-              <Column key={category} gap="12" minWidth="0" flex={1}>
+              <Column key={category} gap="12" style={{ minWidth: '120px' }} flex={1}>
                 <Text variant="label-strong-s" onBackground="neutral-strong" style={{ textTransform: "capitalize" }}>
                   {category}
                 </Text>

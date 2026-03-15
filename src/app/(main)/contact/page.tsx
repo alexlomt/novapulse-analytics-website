@@ -102,7 +102,7 @@ export default function ContactPage() {
         maxWidth="l"
         horizontal="center"
         paddingX="l"
-        paddingY="80"
+        paddingY="64"
         gap="24"
         align="center"
         style={{ margin: "0 auto" }}
@@ -115,10 +115,10 @@ export default function ContactPage() {
         </Text>
       </Column>
 
-      <Column fillWidth maxWidth="l" paddingX="l" paddingBottom="80" style={{ margin: "0 auto" }}>
-        <Grid columns="5" gap="48" s={{ columns: "1" }}>
+      <Column fillWidth maxWidth="l" paddingX="l" paddingBottom="64" style={{ margin: "0 auto" }}>
+        <Grid columns="5" gap="32" s={{ columns: "1" }}>
           {/* Contact Info */}
-          <Column gap="32" style={{ gridColumn: "span 2" }} s={{ style: { gridColumn: "span 1" } }}>
+          <Column gap="24" style={{ gridColumn: "span 2" }}>
             <Card padding="24" gap="16" direction="column" border="neutral-alpha-medium" fillWidth>
               <Row gap="12" vertical="center">
                 <Icon name="envelope" size="m" onBackground="brand-medium" />
@@ -176,7 +176,6 @@ export default function ContactPage() {
             border="neutral-alpha-medium"
             fillWidth
             style={{ gridColumn: "span 3" }}
-            s={{ style: { gridColumn: "span 1" } }}
           >
             <Heading variant="heading-strong-l">Send us a message</Heading>
 

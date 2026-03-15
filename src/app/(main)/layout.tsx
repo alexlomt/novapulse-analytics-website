@@ -67,7 +67,7 @@ export default function RootLayout({
         />
       </head>
       <Providers>
-        <Column as="body" background="page" fillWidth margin="0" padding="0">
+        <Column as="body" background="page" fillWidth margin="0" padding="0" overflow="hidden">
           <Header />
           <Column fillWidth paddingTop="64">
             {children}
